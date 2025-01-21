@@ -1,0 +1,24 @@
+network:
+  port: 7070
+
+log: debug
+
+interval: 3s
+
+javascript:
+  - vm: shared
+    script: |
+      state = {
+        residualpower: 500,
+        pvpower: 5000,
+        batterypower: -750,
+        batterySoc: 55,
+        gridpower: -1000,
+        loadpoints: [
+          { enabled: true, vehicleSoc: 62, maxcurrent: 6, phases: 1, chargepower: 0 },
+          { enabled: false, vehicleSoc: 22, maxcurrent: 0, phases: 3, chargepower: 0 }
+        ]
+      };
+      function logState() {
+        console.log("state:", JSON.stringify(state));
+      }
